@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details Interactive</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #save-product-btn {
+            background-color: #28a745; /* Green for Save */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="product-details-container">
+    <div class="header">
+        <h2 class="title">Product Details</h2>
+        <div class="actions">
+            <input type="text" placeholder="Product" class="search-input">
+            <button class="add-new-btn" id="open-add-modal-btn">
+                <i class="fa-solid fa-plus"></i>
+                Add New
+            </button>
+        </div>
+    </div>
+
+    <table class="product-table" id="product-table">
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th>Product</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Owner</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-id="1">
+            <td class="row-number">1</td>
+            <td>
+                <img src="Smart%20Watch.jpg" alt="Smart Watch" class="product-img">
+            </td>
+            <td class="product-name">smart watch</td>
+            <td class="product-email">test@gmail.com</td>
+            <td class="product-owner">apple</td>
+            <td>
+                <button class="action-btn edit-btn" onclick="openEditModal(1)"><i class="fa-solid fa-pencil"></i></button>
+                <button class="action-btn delete-btn" onclick="deleteRow(1)"><i class="fa-solid fa-trash-can"></i></button>
+            </td>
+        </tr>
+        <tr data-id="2">
+            <td class="row-number">2</td>
+            <td><img src="Smart%20Watch.jpg" alt="Smart Watch" class="product-img"></td>
+            <td class="product-name">smart watch</td>
+            <td class="product-email">test@gmail.com</td>
+            <td class="product-owner">apple</td>
+            <td>
+                <button class="action-btn edit-btn" onclick="openEditModal(2)"><i class="fa-solid fa-pencil"></i></button>
+                <button class="action-btn delete-btn" onclick="deleteRow(2)"><i class="fa-solid fa-trash-can"></i></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="product-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3 id="modal-title">Add New Product</h3>
+        <form id="product-form">
+            <input type="hidden" id="product-id">
+
+            <label for="name">Name</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+
+            <label for="owner">Owner</label>
+            <input type="text" id="owner" required>
+
+            <button type="submit" id="save-product-btn">Save Product</button>
+        </form>
+    </div>
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>
